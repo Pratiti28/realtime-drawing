@@ -1,43 +1,38 @@
- function setup() {
-     video=createCapture(VIDEO);
-     video.size(550,500);
+music="";
+music2="";
+leftx=0;
+rightx=0;
+lefty=0;
+righty=0;
 
-     canvas= createCanvas(550,550);
-     canvas.position(560,150);
+function preload(){
+    music=loadSound("music.mp3");
+    music2=loadSound("music2.mp3");
+}
 
-     posenet=ml5.poseNet(video,modelloaded);
-     posenet.on("pose",gotPoses);
- }
+function setup(){
+    canvas=createCanvas(600,500);
+    canvas.center();
+    video=createCapture(VIDEO);
+    video.hide();
+    posenet=ml5.poseNet(video,modelloaded);
+    posenet.on("pose",gotposes);
+}
 
- function draw(){
-     background("#ae9db8");
-     fill("#967373");
-     stroke("#967373");
-     square(nosex,nosey,difference);
-     document.getElementById("squareside").innerHTML="side of the square is "+difference+"px";
- }
+function draw(){
+    image(video,0,0,600,500);
+}
 
- function modelloaded(){
-     console.log("PoseNet has been initialized");
- }
+function modelloaded(){
+    console.log("model is loaded");
+}
 
- function gotPoses(results){
-     if(results.length >0){
-         console.log(results);
-         nosex=results[0].pose.nose.x;
-         nosey=results[0].pose.nose.y;
-         console.log("nosex ="+nosex+"nosey ="+nosey);
-         leftx=results[0].pose.leftWrist.x;
-         rightx=results[0].pose.rightWrist.x;
-         difference=floor(leftx-rightx);
-     }
-
- }
-
- nosex =0 ;
- nosey =0;
-
- leftx =0;
- rightx =0;
- difference =0;
-
+function gotposes(results){
+if(results.length >0){
+    console.log(results);
+    leftx=results[0].pose.leftWrist.x;
+    lefty=results[0].pose.leftWrist.y;
+    rightx=results[0].pose.rightWrist.x;
+    righty=results[0].pose.rightWrist.y;
+}
+}

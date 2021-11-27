@@ -1,27 +1,23 @@
 .heading{
-    font-size: 25px;
+    width: 100%;
     margin: 0px;
-    width: 100%;
-    box-shadow:5px 5px 5px forestgreen ;
 }
 
-.span1{
-    font-size: 17px;
-    color: indigo;
+.note{
+    color: darkslategray;
+    font-size: 20px;
 }
 
-.copyright{
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    background-color: ivory;
-    color: lightslategray;
-    text-align: center;
+body{
+    background-size: cover;
 }
 
 canvas{
-    border: maroon 10px solid;
-    border-radius: 50px;
-    box-shadow:5px 5px 5px rosybrown;
-    
+    border: 5px forestgreen solid;
+    border-radius: 70px;
+}
+
+.note2{
+    color: ghostwhite;
+    font-size: 20px;
 }
